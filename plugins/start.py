@@ -1,16 +1,10 @@
-from pyrogram import Client as neural ,filters
-from helpers.buttons import *
-@neural.on_message( filters.command("start"))
 import asyncio
+from pyrogram import Client as neural, filters
+from helpers.buttons import *
 
-channelUsername1 = '@MOGATEAM'
-channelUsername2 = '-1001928933168'
-
-async def start_command(data, chat_id, bot):
-    if data == 'start_command':
-        await start_command(chat_id, bot)
-
-async def start_command(chat_id, bot):
+@neural.on_message(filters.command("start"))
+async def start_command(_, data):
+    chat_id = data.chat.id
     try:
         member1, member2 = await asyncio.gather(
             bot.get_chat_member(channelUsername1, chat_id),
